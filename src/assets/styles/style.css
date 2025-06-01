@@ -127,19 +127,43 @@ p {
 /* ============= HEADER ============= */
 
 .header {
+  width: 100%;
   display: flex;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin: 2rem 0;
   justify-content: space-between;
   align-items: center;
 }
 
 .header__menu {
   display: flex;
+  justify-content: center;
   gap: 2.5rem;
   align-items: center;
-  width: 100%;
-  max-width: 810px;
+}
+
+.header__menu._active .menu__wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-black);
+}
+
+.header__menu._active .menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.menu__list {
+  display: none;
 }
 
 .logo {
@@ -176,15 +200,31 @@ p {
   position: relative;
 }
 
+.header__menu._active .menu__link {
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: var(--color-green);
+  border-radius: 16px;
+
+  font-size: 30px;
+
+  transition: transform 0.3s;
+}
+
+.menu__link:active {
+  animation: bounceClick 0.3s ease;
+}
+
 .menu__link::after {
   content: "";
   position: absolute;
-  left: 50%; bottom: -2px;
+  left: 50%;
+  bottom: -2px;
   width: 0%;
   height: 2px;
   background-color: var(--color-black);
   transform: translateX(-50%);
-  transition: width .3s;
+  transition: width 0.3s;
 }
 
 .menu__link:hover::after {
@@ -192,7 +232,8 @@ p {
 }
 
 .button {
-  width: 320px;
+  display: none;
+  width: 240px;
   font-size: 20px;
   padding: 20px 35px;
   border: 1px solid var(--color-black);
@@ -221,8 +262,60 @@ p {
   .button:hover {
     color: white;
   }
-  
+
   .button:hover::after {
     width: 100%;
+  }
+}
+
+.menu__icon {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu__icon span {
+  height: 4px;
+  background-color: var(--color-black);
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+.menu__icon._active span {
+  background-color: var(--color-gray);
+}
+
+.menu__icon._active span:nth-child(1) {
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+.menu__icon._active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu__icon._active span:nth-child(3) {
+  transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* ============= MEDIA QUERIES ============= */
+
+@media (min-width: 80rem) {
+  .header {
+    margin: 4rem 0;
+  }
+
+  .menu__list {
+    display: flex;
+    gap: 40px;
+  }
+  .menu__icon {
+    display: none;
+  }
+  .button {
+    display: block;
   }
 }
