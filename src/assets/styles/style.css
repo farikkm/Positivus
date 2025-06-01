@@ -254,7 +254,7 @@ p {
   height: 2px;
   background-color: var(--color-black);
   transform: translateX(-50%);
-  transition: width 0.3s;
+  transition: width 0.15s;
 }
 
 .menu__link:hover::after {
