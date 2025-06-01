@@ -1,18 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,regular,500,600,700"
+      rel="stylesheet"
+    />
+    <title>Positivus</title>
   </head>
   <body>
     <div id="app">
-
       <div class="wrapper">
-        <h1 class="text-2xl">Hello world</h1>
+        <div class="container">
+          <header class="header">
+            <a href="/" class="logo">
+               <img src="/logo.svg" alt="logo" />
+               <span>Positivus</span>
+            </a>
+            <nav class="header__menu menu">
+              <ul class="w-full flex justify-between">
+                <li>
+                  <a class="menu__link" href="#">About us</a>
+                </li>
+                <li>
+                  <a class="menu__link" href="#">Services</a>
+                </li>
+                <li>
+                  <a class="menu__link" href="#">Use Cases</a>
+                </li>
+                <li>
+                  <a class="menu__link" href="#">Pricing</a>
+                </li>
+                <li>
+                  <a class="menu__link" href="#">Blog</a>
+                </li>
+              </ul>
+              <button class="button">Request a quote</button>
+            </nav>
+          </header>
+        </div>
       </div>
-
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>

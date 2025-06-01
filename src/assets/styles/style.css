@@ -1,1 +1,228 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Mobile */
+    --text-h1-mob: 43px;
+    --text-h2-mob: 36px;
+    --text-h3-mob: 26px;
+    --text-h4-mob: 18px;
+    --text-p-mob: 16px;
+
+    --line-height-p-mob: 24px;
+
+    /* Desktop */
+    --text-h1-desk: 60px;
+    --text-h2-desk: 40px;
+    --text-h3-desk: 30px;
+    --text-h4-desk: 20px;
+    --text-p-desk: 18px;
+
+    --line-height-p-desk: normal;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --text-h1: var(--text-h1-desk);
+      --text-h2: var(--text-h2-desk);
+      --text-h3: var(--text-h3-desk);
+      --text-h4: var(--text-h4-desk);
+
+      --text-p: var(--text-p-desk);
+      --line-height-p: var(--line-height-p-desk);
+    }
+  }
+
+  @media (max-width: 767px) {
+    :root {
+      --text-h1: var(--text-h1-mob);
+      --text-h2: var(--text-h2-mob);
+      --text-h3: var(--text-h3-mob);
+      --text-h4: var(--text-h4-mob);
+
+      --text-p: var(--text-p-mob);
+      --line-height-p: var(--line-height-p-mob);
+    }
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+  }
+
+  h3 {
+    font-size: var(--text-h3);
+  }
+
+  h4 {
+    font-size: var(--text-h4);
+  }
+
+  p {
+    font-size: var(--text-p);
+    line-height: var(--line-height-p);
+  }
+}
+
+@theme {
+  --color-green: #b9ff66;
+  --color-black: #191a23;
+  --color-gray: #f3f3f3;
+}
+
+.container {
+  @apply px-4 mx-auto;
+}
+
+/* ============= TAGS ============= */
+
+html,
+body {
+  font-family: "Space Grotesk";
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: normal;
+  font-weight: 600;
+}
+
+p {
+  font-weight: 400;
+}
+
+.button {
+  transition: transform 0.4s ease;
+}
+
+.button:active {
+  animation: bounceClick 0.4s ease;
+}
+
+/* ============= ANIMATIONS ============= */
+
+@keyframes bounceClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ============= GENERAL CLASSES ============= */
+
+.wrapper {
+  overflow: hidden;
+}
+
+/* ============= HEADER ============= */
+
+.header {
+  display: flex;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__menu {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  width: 100%;
+  max-width: 810px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .logo:hover > img {
+    transform: rotate(360deg);
+  }
+
+  .logo:hover > span {
+    letter-spacing: 1px;
+  }
+}
+
+.logo > img {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.5s;
+}
+
+.logo > span {
+  font-size: 40px;
+  font-weight: 500;
+  transition: letter-spacing 0.3s ease;
+}
+
+.menu__link {
+  font-size: 20px;
+  position: relative;
+}
+
+.menu__link::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-black);
+  transform: translateX(-50%);
+  transition: width .3s;
+}
+
+.menu__link:hover::after {
+  width: 100%;
+}
+
+.button {
+  width: 320px;
+  font-size: 20px;
+  padding: 20px 35px;
+  border: 1px solid var(--color-black);
+  border-radius: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.8s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: var(--color-black);
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .button:hover {
+    color: white;
+  }
+  
+  .button:hover::after {
+    width: 100%;
+  }
+}
