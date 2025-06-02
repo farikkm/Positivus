@@ -77,6 +77,12 @@
   @apply px-4 mx-auto;
 }
 
+.section-title {
+  padding: 0 7px;
+  background-color: var(--color-green);
+  border-radius: 8px;
+}
+
 /* ============= TAGS ============= */
 
 html,
@@ -88,11 +94,14 @@ body._lock {
   overflow: hidden;
 }
 
-h1,
-h2,
-h3 {
+h1 {
   line-height: normal;
   font-weight: 600;
+}
+
+h2,
+h3 {
+  font-weight: 500;
 }
 
 h4 {
@@ -101,6 +110,14 @@ h4 {
 
 p {
   font-weight: 400;
+}
+
+section > *:not(:last-child) {
+  margin-bottom: 80px;
+}
+
+main > *:not(:last-child) {
+  margin-bottom: 100px;
 }
 
 .button {
@@ -357,7 +374,92 @@ p {
   }
 }
 
+/* ============= SERVICES ============= */
+
+.services__subtitle {
+  max-width: 580px;
+}
+
+.services__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.services__card {
+  width: 100%;
+  min-height: 310px;
+
+  background-color: var(--color-gray);
+  padding: 25px;
+  border-radius: 50px;
+
+  border: 1px solid var(--color-black);
+  border-bottom: 8px solid var(--color-black);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.services__card._green {
+  background-color: var(--color-green);
+}
+.services__card._black {
+  background-color: var(--color-black);
+}
+
+.card-services__title {
+  position: relative;
+  width: max-content;
+  color: black;
+  background-color: var(--color-green);
+  padding: 0 7px;
+  border-radius: 8px;
+  max-width: 240px;
+}
+
+.card-services__title._white {
+  background-color: white;
+}
+
+.card-services__title > span {
+  display: inline-block;
+  background-color: var(--color-green);
+  border-radius: 8px;
+  padding: 0px 7px;
+}
+
+.card-services__button {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.card-services__button > i {
+  transition: transform 0.25s ease-in-out;
+}
+
+.card-services__button:hover > i {
+  transform: rotate(390deg);
+}
+
+.card-services__button:hover > span {
+  text-decoration: underline;
+}
+
+.card-services__button:active > span {
+  text-decoration: underline;
+}
+
 /* ============= MEDIA QUERIES ============= */
+
+@media (min-width: 48rem) {
+  .services__card {
+    padding: 50px;
+  }
+}
 
 @media (min-width: 80rem) {
   .header {
@@ -373,5 +475,9 @@ p {
   }
   .button {
     display: block;
+  }
+
+  .services__cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
