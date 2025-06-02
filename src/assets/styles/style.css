@@ -142,11 +142,48 @@ main > *:not(:last-child) {
   }
 }
 
+@keyframes fadeOut {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* ============= GENERAL CLASSES ============= */
 
 .wrapper {
   overflow: hidden;
 }
+
+._hide-by-opacity {
+  opacity: 0;
+}
+
+._fade-out {
+  animation: fadeOut 0.4s ease-in-out;
+}
+
+/* ============= GENERAL ID ============= */
+
+#progress-bar {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw;
+  height: 8px;
+  background-color: var(--color-gray);
+  z-index: 10000;
+}
+
+#progress-bar-line {
+  width: 0%;
+  height: 8px;
+  transition: width .1s linear;
+  background-color: var(--color-green);
+}
+
 
 /* ============= HEADER ============= */
 
@@ -163,6 +200,10 @@ main > *:not(:last-child) {
   justify-content: center;
   gap: 2.5rem;
   align-items: center;
+}
+
+.header__button {
+  display: none;
 }
 
 .header__menu._active .menu__wrapper {
@@ -280,7 +321,7 @@ main > *:not(:last-child) {
 
 .button {
   font-size: 20px;
-  padding: 20px 35px;
+  padding: 20px 25px;
   border: 1px solid var(--color-black);
   border-radius: 16px;
   white-space: nowrap;
@@ -461,7 +502,7 @@ main > *:not(:last-child) {
 
 .free-proposal {
   position: relative;
-  padding: 20px;
+  padding: 30px;
   border-radius: 25px;
   background-color: var(--color-gray);
 }
@@ -474,28 +515,12 @@ main > *:not(:last-child) {
   display: none;
 }
 
-.free-proposal__img_decor > img._hide {
-  display: none;
-}
-
-.free-proposal__img_decor > img._animate {
-  animation: fadeOut .5s ease-in-out;
-}
-
-@keyframes fadeOut {
-  0% {
-    transform: rotate(0deg);
-    opacity: 0;
-  }
-  100% {
-    transform: rotate(180deg);
-    opacity: 1;
-  }
-}
-
 /* ============= MEDIA QUERIES ============= */
 
 @media (min-width: 48rem) {
+  .button {
+    padding: 20px 35px;
+  }
   .services__card {
     padding: 50px;
   }
@@ -526,7 +551,7 @@ main > *:not(:last-child) {
     transform: translateY(45px);
   }
 
-    .free-proposal__img_decor > img:first-child {
+  .free-proposal__img_decor > img:first-child {
     transform: translateY(90px);
   }
 }
@@ -543,6 +568,11 @@ main > *:not(:last-child) {
   .menu__icon {
     display: none;
   }
+
+  .header__button {
+    display: block;
+  }
+
   .hero__button {
     display: block;
   }
