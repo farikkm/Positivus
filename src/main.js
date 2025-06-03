@@ -16,14 +16,15 @@ const clientHeight = document.documentElement.clientHeight;
 function activateProgressBar() {
   const scrollTop = document.documentElement.scrollTop;
 
-  const progressBarLineWidth = Math.trunc((scrollTop / (scrollHeight - clientHeight)) * 100);
+  const progressBarLineWidth = Math.trunc(
+    (scrollTop / (scrollHeight - clientHeight)) * 100
+  );
 
-  progressBarLine.style.width = `${progressBarLineWidth}%`
+  progressBarLine.style.width = `${progressBarLineWidth}%`;
 }
 
-window.addEventListener("DOMContentLoaded", activateProgressBar)
-window.addEventListener("scroll", activateProgressBar)
-
+window.addEventListener("DOMContentLoaded", activateProgressBar);
+window.addEventListener("scroll", activateProgressBar);
 
 // Menu Icon
 
@@ -59,7 +60,6 @@ const servicesObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        console.log("Hello");
         servicesCards.forEach((card, index) => {
           setTimeout(() => {
             card.classList.add("_fade-out");
@@ -104,3 +104,80 @@ const freeProposalBlockObserver = new IntersectionObserver(
 if (freeProposalBlock && decors.length > 0) {
   freeProposalBlockObserver.observe(freeProposalBlock);
 }
+
+// Studies
+const studiesBlock = document.getElementById("studies");
+const studiesSeperators = [...document.querySelectorAll(".studies__separator")];
+
+const studiesBlockObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio === 1) {
+        studiesSeperators.forEach((seperator) => {
+          seperator.style.height = "100%";
+        });
+      }
+    });
+  },
+  { threshold: 1 }
+);
+
+studiesBlockObserver.observe(studiesBlock);
+
+const studiesCases = [...document.querySelectorAll(".studies__case")];
+const studiesCasesContainer = document.querySelector(".studies__cases");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+const dotsContainer = document.querySelector('.dots');
+
+let currentIndex = 0;
+
+studiesCases.forEach((_, i) => {
+  const dot = document.createElement("span");
+  if (i === 0) dot.classList.add("active");
+  dotsContainer.appendChild(dot);
+});
+const dots = document.querySelectorAll(".dots span");
+
+function updateSlider() {
+  studiesCasesContainer.style.transform = `translateX(-${currentIndex * 87}%)`;
+
+  dots.forEach((dot) => dot.classList.remove("active"));
+  dots[currentIndex].classList.add("active");
+}
+
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % studiesCases.length;
+  updateSlider();
+});
+
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + studiesCases.length) % studiesCases.length;
+  updateSlider();
+});
+
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    currentIndex = i;
+    updateSlider();
+  });
+});
+
+let startX = 0;
+
+studiesCasesContainer.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+studiesCasesContainer.addEventListener('touchend', (e) => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (diff > 50) {
+    currentIndex = (currentIndex - 1 + studiesCases.length) % studiesCases.length;
+    updateSlider();
+  } else if (diff < -50) {
+    currentIndex = (currentIndex + 1) % studiesCases.length;
+    updateSlider();
+  }
+});
