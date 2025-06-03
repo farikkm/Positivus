@@ -128,7 +128,7 @@ const studiesCases = [...document.querySelectorAll(".studies__case")];
 const studiesCasesContainer = document.querySelector(".studies__cases");
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
-const dotsContainer = document.querySelector('.dots');
+const dotsContainer = document.querySelector(".dots");
 
 let currentIndex = 0;
 
@@ -165,19 +165,37 @@ dots.forEach((dot, i) => {
 
 let startX = 0;
 
-studiesCasesContainer.addEventListener('touchstart', (e) => {
+studiesCasesContainer.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
 });
 
-studiesCasesContainer.addEventListener('touchend', (e) => {
+studiesCasesContainer.addEventListener("touchend", (e) => {
   const endX = e.changedTouches[0].clientX;
   const diff = endX - startX;
 
   if (diff > 50) {
-    currentIndex = (currentIndex - 1 + studiesCases.length) % studiesCases.length;
+    currentIndex =
+      (currentIndex - 1 + studiesCases.length) % studiesCases.length;
     updateSlider();
   } else if (diff < -50) {
     currentIndex = (currentIndex + 1) % studiesCases.length;
     updateSlider();
   }
+});
+
+// Working process
+const workingProcessItems = [
+  ...document.querySelectorAll(".working-process__item"),
+];
+
+workingProcessItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    const isActive = item.classList.contains("_active");
+    
+    workingProcessItems.forEach((i) => i.classList.remove("_active"));
+
+    if (!isActive) {
+      item.classList.add("_active");
+    }
+  });
 });
