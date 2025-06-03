@@ -650,7 +650,9 @@
                     <div class="feedbacks-testimonials__slides">
                       <div class="feedbacks-testimonials__slide">
                         <div class="feedbacks-testimonials__feedback">
-                          <div class="feedbacks-testimonials__feedback_triangle">
+                          <div
+                            class="feedbacks-testimonials__feedback_triangle"
+                          >
                             <div></div>
                             <div></div>
                           </div>
@@ -671,8 +673,82 @@
               </div>
             </section>
 
-            <section id="contact"></section>
+            <section id="contact">
+              <div
+                class="flex flex-col items-center gap-10 *:text-center md:flex-row md:*:text-left"
+              >
+                <h2 class="section-title">Contact Us</h2>
+                <p class="contact__subtitle">
+                  Connect with Us: Let's Discuss Your Digital Marketing Needs
+                </p>
+              </div>
+
+              <div class="contact__wrapper">
+                <div class="contact__checkboxes">
+                  <div>
+                    <input
+                      name="say-hi"
+                      id="say-hi"
+                      type="checkbox"
+                      class="fancy-checkbox"
+                    />
+                    <label for="say-hi">Say Hi</label>
+                  </div>
+                  <div>
+                    <input
+                      name="quote"
+                      id="quote"
+                      type="checkbox"
+                      class="fancy-checkbox"
+                    />
+                    <label for="quote">Get a Quote</label>
+                  </div>
+                </div>
+                <form class="contact__form">
+                  <div class="contact__input">
+                    <label for="name">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div class="contact__input">
+                    <label for="email">Email *</label>
+                    <input
+                      type="text"
+                      name="email"
+                      id="email"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="contact__textarea">
+                    <label for="message">Message *</label>
+                    <textarea
+                      type="text"
+                      name="message"
+                      id="message"
+                      rows="7"
+                      placeholder="Message"
+                      required
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="button _white-overflow">
+                    Send Message
+                  </button>
+                </form>
+                <img
+                  class="contact__img"
+                  src="./src/assets/images/contact/Illustration.svg"
+                  alt="contact-illustration"
+                />
+              </div>
+            </section>
           </main>
+
+          <footer></footer>
         </div>
       </div>
     </div>
