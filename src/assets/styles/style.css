@@ -951,6 +951,122 @@ button.next {
   background-color: #fff;
 }
 
+/* ============= FOOTER ============= */
+footer {
+  padding: 40px;
+  background-color: var(--color-black);
+  border-radius: 50px 50px 0 0;
+}
+
+footer * {
+  color: white;
+}
+
+.footer__logo {
+  max-width: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.footer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 65px;
+}
+
+.footer__logo > span {
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.footer__logo:hover > span {
+  letter-spacing: 2px;
+}
+
+.footer__menu .menu__link::after {
+  background-color: #fff;
+}
+
+.footer__social > * {
+  cursor: pointer;
+}
+
+.footer__info > * {
+  text-align: center;
+}
+
+.footer__info > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+.info-footer__title {
+  width: max-content;
+  margin-bottom: 20px;
+  color: var(--color-black);
+  padding: 0 7px;
+  border-radius: 50px;
+  background-color: var(--color-green);
+  margin: 0 auto;
+}
+
+.footer__divider {
+  height: 1px;
+  width: 100%;
+  background-color: white;
+  margin: 50px 0;
+}
+
+.footer__form {
+  max-width: 635px;
+  width: 100%;
+  padding: 40px 20px;
+  background-color: #292a32;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.footer__form > * {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.form-footer__input {
+  padding: 22px 0 22px 35px;
+  border: 1px solid white;
+}
+.form-footer__input::placeholder {
+  color: white;
+}
+
+.form-footer__button {
+  cursor: pointer;
+
+  padding: 15px 25px;
+  background-color: var(--color-green);
+  color: #000;
+  font-size: var(--text-h4);
+}
+
+.footer__floor {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer__floor > * {
+  font-size: var(--text-p);
+}
+
+.footer__floor > a {
+  text-decoration: underline;
+}
+
 /* ============= MEDIA QUERIES ============= */
 
 @media (min-width: 48rem) {
@@ -989,6 +1105,18 @@ button.next {
   .contact__wrapper {
     padding: 60px 100px 80px 100px;
   }
+  .footer__logo {
+    margin: 0;
+  }
+  .form-footer__button {
+    padding: 20px 35px;
+  }
+  footer {
+    padding: 60px;
+  }
+  .footer__form {
+    padding: 40px 60px;
+  }
 }
 
 @media (min-width: 64rem) {
@@ -1021,6 +1149,10 @@ button.next {
 
   .item-working-process__title {
     font-size: 30px;
+  }
+
+  .form-footer {
+    flex-direction: row;
   }
 }
 
@@ -1096,5 +1228,13 @@ button.next {
 
   .team__cards {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .info-footer__title {
+    margin: 0;
+  }
+
+  .footer__info > * {
+    text-align: left;
   }
 }

@@ -25,6 +25,7 @@ function activateProgressBar() {
 
 window.addEventListener("DOMContentLoaded", activateProgressBar);
 window.addEventListener("scroll", activateProgressBar);
+window.addEventListener("resize", activateProgressBar);
 
 // Menu Icon
 
