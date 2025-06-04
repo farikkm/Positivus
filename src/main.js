@@ -192,11 +192,34 @@ const workingProcessItems = [
 workingProcessItems.forEach((item) => {
   item.addEventListener("click", () => {
     const isActive = item.classList.contains("_active");
-    
+
     workingProcessItems.forEach((i) => i.classList.remove("_active"));
 
     if (!isActive) {
       item.classList.add("_active");
     }
+  });
+});
+
+const sections = [...document.querySelectorAll("section")];
+const menuLinks = [...document.querySelectorAll(".menu__link")];
+
+menuLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    const linkSection = link.dataset.section;
+
+    sections.forEach((section) => {
+      if (section.id === linkSection) {
+        const offset = 100;
+        console.log(window.scrollY);
+
+        const top = section.getBoundingClientRect().top - offset;
+
+        window.scrollTo({
+          top,
+          behavior: "smooth",
+        });
+      }
+    });
   });
 });
